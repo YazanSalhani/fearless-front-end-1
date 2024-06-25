@@ -1,13 +1,27 @@
-function createCard(name, description, pictureUrl) {
+function createCard(name, description, pictureUrl, formattedStartDate, formattedEndDate, location) {
     return `
-    <div class="card" style="box-shadow: 5px 5px 5px grey; margin-bottom: 20px;">
+    <div class="card" style="box-shadow: 5px 5px 5px grey; margin-top: 20px;">
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">${location}</h6>
             <p class="card-text">${description}</p>
         </div>
+        <div class="card-footer text-body-secondary">
+            ${formattedStartDate} - ${formattedEndDate}
+        </div>
     </div>
+
   `;
+}
+
+function formatDate(date) {
+    const dateObject = new Date(date);
+    const month = dateObject.getUTCMonth() + 1
+    const day = dateObject.getUTCDate()
+    const year = dateObject.getUTCFullYear()
+
+    return `${month}/${day}/${year}`
 }
 
 
@@ -28,10 +42,20 @@ window.addEventListener('DOMContentLoaded', async () => {
 
                 if (detailResponse.ok) {
                     const details = await detailResponse.json();
+
                     const name = details.conference.name;
                     const description = details.conference.description;
                     const pictureUrl = details.conference.location.picture_url;
-                    const html = createCard(name, description, pictureUrl);
+
+                    const startDate = details.conference.starts
+                    const formattedStartDate = formatDate(startDate);
+
+                    const endDate = details.conference.ends
+                    const formattedEndDate = formatDate(endDate);
+
+                    const location = details.conference.location.name;
+
+                    const html = createCard(name, description, pictureUrl, formattedStartDate, formattedEndDate, location);
 
                     let col
                     if (count === 1) {

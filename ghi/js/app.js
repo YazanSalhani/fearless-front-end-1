@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         } else {
             const data = await response.json();
 
-            let count = 1
+            let count = 1;
             for (let conference of data.conferences) {
                 const detailURL = `http://localhost:8000${conference.href}`;
                 const detailResponse = await fetch(detailURL);
@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
                     const html = createCard(name, description, pictureUrl, formattedStartDate, formattedEndDate, location);
 
-                    let col
+                    let col;
                     if (count === 1) {
                         col = '.col1';
                         count++;
@@ -66,14 +66,16 @@ window.addEventListener('DOMContentLoaded', async () => {
                         count++;
                     } else if (count === 3) {
                         col = '.col3';
-                        count = 1
+                        count = 1;
                     }
                     const column = document.querySelector(col)
-                    column.innerHTML += html
+                    column.innerHTML += html;
                 }
             }
             }
     } catch (error) {
         console.error('error', error);
+        const errorAlert = document.getElementById("error-alert")
+        errorAlert.classList.remove('d-none')
     }
 });

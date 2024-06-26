@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             event.preventDefault();
 
             const formData = new FormData(formTag);
-            const json =JSON.stringify(Object.fromEntries(formData));
+            const json = JSON.stringify(Object.fromEntries(formData));
             //console.log(json);
 
             const locationUrl = 'http://localhost:8000/api/locations/';

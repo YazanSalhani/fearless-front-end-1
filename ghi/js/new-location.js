@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             for (let state of data.states) {
                 const option = document.createElement('option');
                 option.value = state.abbreviation;
-                option.innerHTML = state.state;
+                option.innerHTML = state.name;
                 selectTag.appendChild(option);
             }
 

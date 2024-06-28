@@ -1,19 +1,5 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Nav from './Nav';
-
-function App(props) {
-  //const [count, setCount] = useState(0)
-  if (props.attendees === undefined) {
-    return null;
-  }
-
-  return (
-    <>
-      <Nav />
-      <div className="container">
+function AttendeesList(props) {
+    return (
         <table className="table table-striped">
           <thead>
             <tr>
@@ -32,9 +18,7 @@ function App(props) {
             })}
           </tbody>
         </table>
-      </div>
-    </>
-  )
+    )
 }
 
-export default App
+export default AttendeesList;

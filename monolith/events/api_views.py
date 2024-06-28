@@ -266,7 +266,7 @@ def api_list_states(request):
     state_list = []
     for item in states:
         state = {
-            "state": item.name,
+            "name": item.name,
             "abbreviation": item.abbreviation
         }
         state_list.append(state)

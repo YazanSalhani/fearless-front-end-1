@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded', async () => {
                     const details = await detailResponse.json();
 
                     const name = details.conference.name;
-                    //const title = details.conference.name;
+                    
                     const description = details.conference.description;
                     const pictureUrl = details.conference.location.picture_url;
 

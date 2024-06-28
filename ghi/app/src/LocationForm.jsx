@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 function LocationForm() {
     const [states, setStates] = useState([]);
     const [name, setName] = useState('');
@@ -36,7 +37,7 @@ function LocationForm() {
 
     function handleStateChange(event) {
         const value = event.target.value;
-        setState(value);
+        setStates(value);
     }
 
     async function handleSubmit(event) {
@@ -102,7 +103,7 @@ function LocationForm() {
                 <label htmlFor ="city">City</label>
               </div>
               <div className="mb-3">
-                <select value={state} onChange={handleStateChange}required name="state" id="state" className="form-select">
+                <select value={state} onChange={handleStateChange} required name="state" id="state" className="form-select">
                   <option value="">Choose a state</option>
                   {states.map(state => {
                     return (

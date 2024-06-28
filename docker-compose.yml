@@ -1,5 +1,13 @@
 version: "3.7"
 services:
+  react-attendees:
+    image: node:latest
+    command: npm run dev -- --host
+    working_dir: /app
+    volumes:
+      - ./ghi/attendees:/app
+    ports:
+      - "5173:5173"
   monolith:
     build:
       context: ./monolith
